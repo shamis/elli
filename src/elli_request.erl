@@ -89,6 +89,8 @@ body_qs(#req{body = Body} = Req) ->
             elli_http:split_args(Body);
         <<"application/x-www-form-urlencoded;", _/binary>> -> % ; charset=...
             elli_http:split_args(Body);
+        <<"application/json">> ->
+            Body;
         _ ->
             erlang:error(badarg)
     end.
